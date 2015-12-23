@@ -21,8 +21,8 @@
     (font-active-window
       (name "sans")
       (size 8)
-      (weight "bold")    ; Add bold/normal
-      (slant "normal"))  ; Add italic/normal
+      (weight "bold")
+      (slant "normal"))
     (font-inactive-window
       (name "sans")
       (size 8)

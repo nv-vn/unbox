@@ -79,6 +79,10 @@
 (define-xml weight "weight")
 (define-xml slant "slant")
 
+(define bold "bold")
+(define italic "italic")
+(define normal "normal")
+
 (define-xml desktops "desktops")
 (define-xml-num number "number")
 (define-xml-num firstdesk "firstdesk")
@@ -110,10 +114,16 @@
 
 (define-xml applications "applications")
 (define (application attrs . sub-nodes)
+  (let
+      ([class class-attr]
+       [name  name-attr ]
+       [role  role-attr ]
+       [title title-attr]
+       [type  type-attr ])
   `(,(string-append "<application "
                     (apply string-append attrs) ">")
     ,@sub-nodes
-    "</application>"))
+    "</application>")))
 (define-xml-num desktop "desktop")
 (define all-desktops "<desktop>all</desktop>")
 (define desktop-all "<desktop>all</desktop>")
@@ -188,6 +198,14 @@
     ,@args
     "</action>"))
 
+(define-syntax define-action
+  (syntax-rules ()
+    [(_ action-name action-string)
+     (define (action-name . args)
+       `(,(string-append "<action name=\"" name "\">")
+         ,@args
+         "</action>"))]))
+
 (define-xml command "command")
 (define-xml prompt "prompt")
 (define-xml startup-notify "startupnotify")
@@ -212,6 +230,58 @@
 (define monitor-active "<monitor>active</monitor>")
 (define monitor-mouse "<monitor>mouse</monitor>")
 (define monitor-all "<monitor>all</monitor>")
-(define-xml show-menu "<action name=\"ShowMenu\">" "</action>")
 
+(define-action show-menu "ShowMenu")
+
+(define-action next-window "NextWindow")
+(define-action previous-window "PreviousWindow")
+(define-xml dialog "dialog")
+(define list-dialog (dialog "list"))
+(define icon-dialog (dialog "icons"))
+(define none-dialog (dialog "none"))
+(define-xml bar "bar")
+(define-xml raise "raise")
+(define-xml all-desktops "allDesktops")
+(define-xml panels "panels")
+(define-xml linear "linear")
+(define-xml interactive "interactive")
+(define-xml finalactions "finalactions")
+(define-xml final-actions "finalactions")
+
+(define-action directional-cycle-windows "DirectionalCycleWindows")
+(define-action directional-target-window "DirectionalTargetWindow")
+(define-xml direction "direction")
+
+(define north "north")
+(define south "south")
+(define east "east")
+(define west "west")
+(define northeast "northeast")
+(define southeast "southeast")
+(define northwest "northwest")
+(define southeast "southeast")
+
+(define-action goto-desktop "GoToDesktop")
+(define-action go-to-desktop "GoToDesktop")
+(define-xml-num to "to")
+(define-xml wrap "wrap")
+
+(define-action add-desktop "AddDesktop")
+(define-action remove-desktop "RemoveDesktop")
+(define-xml where "where")
+
+(define current "current")
+(define last "last")
+
+(define-action toggle-show-desktop "ToggleShowDesktop")
+(define-xml strict "strict")
+
+(define-action toggle-dock-autohide "ToggleDockAutohide")
+(define-action reconfigure "Reconfigure")
+(define-action restart "Restart")
+(define-action exit "Exit")
+(define-action session-logout "SessionLogoout")
+
+(define-action debug "Debug")
+(define-xml string "string")
 ;; TODO: create all of http://openbox.org/wiki/Help:Actions
