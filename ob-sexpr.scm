@@ -84,7 +84,10 @@
 (define-xml-num firstdesk "firstdesk")
 (define-xml-num first-desk "firstdesk")
 (define-xml-num popup-time "popupTime")
-(define-xml names "names")
+(define (names . name-list)
+  `("<names>"
+    ,@(map name name-list)
+    "</names>"))
 
 (define-xml resize "resize")
 (define-xml draw-contents "drawContents")
@@ -118,15 +121,15 @@
 (define-xml decor "decor")
 (define-xml maximized "maximized")
 
-(define (class x)
+(define (class-attr x)
   (string-append "class=\"" x "\""))
-(define (name x)
+(define (name-attr x)
   (string-append "name=\"" x "\""))
-(define (role x)
+(define (role-attr x)
   (string-append "role=\"" x "\""))
-(define (title x)
+(define (title-attr x)
   (string-append "title=\"" x "\""))
-(define (name x)
+(define (type-attr x)
   (string-append "type=\"" x "\""))
 (define above "above")
 (define below "below")
@@ -138,8 +141,8 @@
   `(,(string-append "<keybind key=\"" keys "\">")
     ,@actions
     "</keybind>"))
-(define (keybind-chroot keys chroot . actions)
-  `(,(string-append "<keybind key=\"" keys "\" chroot=\"" chroot "\">")
+(define (keybind-chroot keys . actions)
+  `(,(string-append "<keybind key=\"" keys "\" chroot=\"true\">")
     ,@actions
     "</keybind>"))
 
@@ -158,8 +161,57 @@
 (define (both bind1 bind2)
   (string-append bind1 " " bind2))
 
+(define-xml mouse "mouse")
+(define (context mname . sub-nodes)
+  `(,(string-append "<context name=\"" mname "\">")
+    ,@sub-nodes
+    "</context>"))
+(define (mousebind button action . sub-nodes)
+  `(,(string-append "<mousebind button=\"" button "\" action=\"" action "\">")
+    ,@sub-nodes
+    "</mousebind>"))
+
+(define left "Left")
+(define right "Right")
+(define middle "Middle")
+(define up "Up")
+(define down "Down")
+
+(define press "Press")
+(define click "Click")
+(define double-click "DoubleClick")
+(define release "Release")
+(define drag "Drag")
+
 (define (action name . args)
   `(,(string-append "<action name=\"" name "\">")
     ,@args
     "</action>"))
+
+(define-xml command "command")
+(define-xml prompt "prompt")
+(define-xml startup-notify "startupnotify")
+(define-xml startupnotify "startupnotify")
+(define-xml enabled "enabled")
+(define-xml icon "icon")
+(define-xml wm-class "wmclass")
+(define-xml wmclass "wmclass")
+
+(define-syntax execute
+  (syntax-rules ()
+    [(_ cmd)
+     (action "Execute" (command cmd))]
+    [(_ (pre ...) cmd)
+     (action "Execute" pre ... (command cmd))]))
+
+(define-xml menu "menu")
+(define-xml position "position")
+(define-xml-num monitor "monitor")
+(define monitor-default "<monitor>default</monitor>")
+(define monitor-primary "<monitor>primary</monitor>")
+(define monitor-active "<monitor>active</monitor>")
+(define monitor-mouse "<monitor>mouse</monitor>")
+(define monitor-all "<monitor>all</monitor>")
+(define-xml show-menu "<action name=\"ShowMenu\">" "</action>")
+
 ;; TODO: create all of http://openbox.org/wiki/Help:Actions
