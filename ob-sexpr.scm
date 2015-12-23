@@ -104,3 +104,62 @@
 (define top "Top")
 (define centered "Center")
 (define fixed "Fixed")
+
+(define-xml applications "applications")
+(define (application attrs . sub-nodes)
+  `(,(string-append "<application "
+                    (apply string-append attrs) ">")
+    ,@sub-nodes
+    "</application>"))
+(define-xml-num desktop "desktop")
+(define all-desktops "<desktop>all</desktop>")
+(define desktop-all "<desktop>all</desktop>")
+(define-xml layer "layer")
+(define-xml decor "decor")
+(define-xml maximized "maximized")
+
+(define (class x)
+  (string-append "class=\"" x "\""))
+(define (name x)
+  (string-append "name=\"" x "\""))
+(define (role x)
+  (string-append "role=\"" x "\""))
+(define (title x)
+  (string-append "title=\"" x "\""))
+(define (name x)
+  (string-append "type=\"" x "\""))
+(define above "above")
+(define below "below")
+
+(define-xml keyboard "keyboard")
+(define-xml rebind-on-mapping-notify "rebindOnMappingNotify")
+(define-xml chain-quit-key "chainQuitKey")
+(define (keybind keys . actions)
+  `(,(string-append "<keybind key=\"" keys "\">")
+    ,@actions
+    "</keybind>"))
+(define (keybind-chroot keys chroot . actions)
+  `(,(string-append "<keybind key=\"" keys "\" chroot=\"" chroot "\">")
+    ,@actions
+    "</keybind>"))
+
+(define (S . keys)
+  (apply string-append (cons "S-" keys)))
+(define (C . keys)
+  (apply string-append (cons "C-" keys)))
+(define (A . keys)
+  (apply string-append (cons "A-" keys)))
+(define (W . keys)
+  (apply string-append (cons "W-" keys)))
+(define (M . keys)
+  (apply string-append (cons "M-" keys)))
+(define (H . keys)
+  (apply string-append (cons "H-" keys)))
+(define (both bind1 bind2)
+  (string-append bind1 " " bind2))
+
+(define (action name . args)
+  `(,(string-append "<action name=\"" name "\">")
+    ,@args
+    "</action>"))
+;; TODO: create all of http://openbox.org/wiki/Help:Actions
