@@ -23,6 +23,19 @@ simply run `box-cutter` and a file called rc.xml will be generated in that
 directory. That file can simply be placed in your ~/.config/openbox directory
 to serve as your Openbox rc.xml.
 
+Because boxcutter does not currently account for proper formatting, it may be
+a good idea to apply an XML formatting tool on the output to make it easier
+to read. In order to do this, you can run:
+```
+$ xmllint --format ~/.config/boxcutter/rc.xml >~/.config/boxcutter/rc.xml
+```
+Or, to copy it to the correct location for Openbox, run:
+```
+$ xmllint --format ~/.config/boxcutter/rc.xml >~/.config/openbox/rc.xml
+```
+
+Note: Future versions of boxcutter will incorporate this as a flag
+
 # Boxcutter syntax:
 
 Boxcutter uses a Scheme syntax for configurations. The syntax should be compliant

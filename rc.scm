@@ -42,4 +42,24 @@
     (number 4)
     (first-desk 1)
     (names "First" "Second" "Third" "Fourth")
-    (popup-time 875)))
+    (popup-time 875))
+  (resize
+    (draw-contents yes)
+    (popup-show non-pixel)
+    (popup-position centered)
+    (popup-fixed-position
+      (x 10) (y 10)))    ; Margins, dock should come next?
+  (keyboard
+    (chain-quit-key [C "g"])
+    (keybind [C [A left]]
+      (go-to-desktop to-left
+        (wrap no)))
+    (keybind [C [A right]]
+      (go-to-desktop to-right
+        (wrap no)))
+    (keybind [C [A up]]
+      (go-to-desktop to-up
+        (wrap no)))
+    (keybind [C [A down]]
+      (go-to-desktop to-down
+        (wrap no)))))    ; And so on...

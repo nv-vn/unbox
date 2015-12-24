@@ -9,8 +9,8 @@
             "<!-- Error encountered while generating XML -->")))
 
 (define (ob-conf nodes)
-  (string-append "<!-- Generated with ob-sexpr -->\n"
-                 "<?xml version=\"1.0\" encoding=\"UTF-8\">\n"
+  (string-append "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+                 "<!-- Generated with https://github.com/nv-vn/boxcutter -->\n"
                  "<openbox_config xmlns=\"https://openbox.org/3.4/rc\" xmlns:xi=\"https://www.w3.org/2001/XInclude\">\n"
                  (ob-gen-xml nodes "") ; No indentation by default
                  "</openbox_config>\n"))
@@ -98,6 +98,7 @@
 (define-xml popup-show "popupShow")
 (define-xml popup-position "popupPosition")
 (define-xml popup-position-fixed "popupPositionFixed")
+(define-xml popup-fixed-position "popupFixedPosition") ; Why do both of these exist?
 (define-xml-num x "x")
 (define-xml-num y "y")
 (define x-center "<x>center</x>")
@@ -176,8 +177,8 @@
   `(,(string-append "<context name=\"" mname "\">")
     ,@sub-nodes
     "</context>"))
-(define (mousebind button action . sub-nodes)
-  `(,(string-append "<mousebind button=\"" button "\" action=\"" action "\">")
+(define (mousebind mbutton maction . sub-nodes)
+  `(,(string-append "<mousebind button=\"" mbutton "\" action=\"" maction "\">")
     ,@sub-nodes
     "</mousebind>"))
 
@@ -193,8 +194,8 @@
 (define release "Release")
 (define drag "Drag")
 
-(define (action name . args)
-  `(,(string-append "<action name=\"" name "\">")
+(define (action mname . args)
+  `(,(string-append "<action name=\"" mname "\">")
     ,@args
     "</action>"))
 
@@ -202,7 +203,7 @@
   (syntax-rules ()
     [(_ action-name action-string)
      (define (action-name . args)
-       `(,(string-append "<action name=\"" name "\">")
+       `(,(string-append "<action name=\"" action-string "\">")
          ,@args
          "</action>"))]))
 
@@ -264,6 +265,10 @@
 (define-action goto-desktop "GoToDesktop")
 (define-action go-to-desktop "GoToDesktop")
 (define-xml-num to "to")
+(define to-left "<to>left</to>")
+(define to-right "<to>right</to>")
+(define to-up "<to>up</to>")
+(define to-down "<to>down</to>")
 (define-xml wrap "wrap")
 
 (define-action add-desktop "AddDesktop")
