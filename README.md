@@ -87,3 +87,14 @@ A basic example exists below:
     (strenth 10)
     (screen-edge-strength 10)))
 ```
+
+# Contributing
+
+If you're interested in helping out this project or find a problem with it, there
+are a number of ways you can contribute. One of the best ways is to open up a
+issue on the [Github repository](https://github.com/nv-vn/boxcutter/issues) to
+report bugs, missing features, or inconsistent behaviour. Additionally, you are
+encouraged to fork the repository and add features to improve the project for
+others (or fix bugs that you find). Finally, if you're interested in contributing
+to the community as a whole, please help with documentation efforts or by sharing
+your configs so that others can use them as examples to build off of.
