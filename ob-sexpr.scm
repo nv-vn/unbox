@@ -145,6 +145,39 @@
 (define above "above")
 (define below "below")
 
+(define-xml margins "margins")
+;; In order to allow for these to be abbreviated,
+;; we must break away from lexical scope and switch
+;; to dynamic scope. Is there a way to do this using
+;; (_ (f x) ...) as a syntax-rule?
+(define-xml-num margin-top "top")
+(define-xml-num margin-bottom "bottom")
+(define-xml-num margin-left "left")
+(define-xml-num margin-right "right")
+
+(define-xml dock "dock")
+(define-xml stacking "stacking")
+(define-xml-num floating-x "floatingX")
+(define-xml-num floating-y "floatingY")
+(define-xml autohide "autoHide")
+(define-xml auto-hide "autoHide")
+(define-xml-num hide-delay "hideDelay")
+(define-xml-num show-delay "showDelay")
+(define-xml move-button "moveButton")
+(define-xml no-strut "noStrut")
+
+(define top "Top")
+(define bottom "Bottom")
+(define top-left "TopLeft")
+(define bottom-left "BottomLeft")
+(define top-right "TopRight")
+(define bottom-right "BottomRight")
+(define floating "Floating")
+(define above "Above")
+(define below "Below")
+(define vertical "Vertical")
+(define horizontal "Horizontal")
+
 (define-xml keyboard "keyboard")
 (define-xml rebind-on-mapping-notify "rebindOnMappingNotify")
 (define-xml chain-quit-key "chainQuitKey")

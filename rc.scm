@@ -48,7 +48,23 @@
     (popup-show non-pixel)
     (popup-position centered)
     (popup-fixed-position
-      (x 10) (y 10)))    ; Margins, dock should come next?
+      (x 10) (y 10)))
+  (margins 
+    (margin-top 0)
+    (margin-bottom 0)
+    (margin-left 0)
+    (margin-right 0))
+  (dock
+    (position top-left)
+    (floating-x 0)
+    (floating-y 0)
+    (no-strut no)
+    (stacking above)
+    (direction vertical)
+    (autohide no)
+    (hide-delay 300)
+    (show-delay 300)
+    (move-button middle))
   (keyboard
     (chain-quit-key [C "g"])
     (keybind [C [A left]]
