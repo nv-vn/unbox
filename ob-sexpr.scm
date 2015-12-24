@@ -161,6 +161,16 @@
    (margin-left mleft)
    (margin-right mright)))
 
+(define-xml menu "menu")
+(define-xml menu-middle "middle")
+(define-xml-num submenu-show-delay "submenuShowDelay")
+(define-xml-num sub-menu-show-delay "submenuShowDelay")
+(define-xml-num submenu-hide-delay "submenuHideDelay")
+(define-xml-num sub-menu-hide-delay "submenuHideDelay")
+(define-xml application-icons "applicationIcons")
+(define-xml manage-desktops "manageDesktops")
+(define-xml file "file")
+
 (define-xml dock "dock")
 (define-xml stacking "stacking")
 (define-xml-num floating-x "floatingX")
@@ -262,7 +272,6 @@
     [(_ (pre ...) cmd)
      (action "Execute" pre ... (command cmd))]))
 
-(define-xml menu "menu")
 (define-xml position "position")
 (define-xml-num monitor "monitor")
 (define monitor-default "<monitor>default</monitor>")
