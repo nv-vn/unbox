@@ -154,6 +154,12 @@
 (define-xml-num margin-bottom "bottom")
 (define-xml-num margin-left "left")
 (define-xml-num margin-right "right")
+(define (make-margins mtop mbottom mleft mright)
+  (margins
+   (margin-top mtop)
+   (margin-bottom mbottom)
+   (margin-left mleft)
+   (margin-right mright)))
 
 (define-xml dock "dock")
 (define-xml stacking "stacking")
@@ -302,7 +308,16 @@
 (define to-right "<to>right</to>")
 (define to-up "<to>up</to>")
 (define to-down "<to>down</to>")
+(define to-north "<to>north</to>")
+(define to-south "<to>south</to>")
+(define to-east "<to>east</to>")
+(define to-west "<to>west</to>")
+(define to-current "<to>current</to>")
+(define to-next "<to>next</to>")
+(define to-previous "<to>previous</to>")
+(define to-last "<to>last</to>")
 (define-xml wrap "wrap")
+(define-xml follow "follow")
 
 (define-action add-desktop "AddDesktop")
 (define-action remove-desktop "RemoveDesktop")
@@ -322,4 +337,47 @@
 
 (define-action debug "Debug")
 (define-xml string "string")
-;; TODO: create all of http://openbox.org/wiki/Help:Actions
+
+(define-action action-focus "Focus")
+(define-action action-raise "Raise")
+(define-action action-lower "Lower")
+(define-action action-raise-lower "RaiseLower")
+(define-action action-unfocus "Unfocus")
+(define-action action-focus-to-bottom "FocusToBottom")
+(define-action action-iconify "Iconify")
+(define-action action-resize "Resize")
+
+(define-xml edge "edge")
+
+(define-action close "Close")
+(define-action toggle-shade "ToggleShade")
+(define-action shade "Shade")
+(define-action unshade "Unshade")
+(define-action toggle-omnipresent "ToggleOmnipresent")
+(define-action toggle-maximize "ToggleMaximize")
+(define-action maximize "Maximize")
+(define-action unmaximize "Unmaximize")
+(define-action toggle-fullscreen "ToggleFullscreen")
+(define-action toggle-decorations "ToggleDecorations")
+(define-action decorate "Decorate")
+(define-action undecorate "Undecorate")
+(define-action send-to-desktop "SendToDesktop")
+(define-action move "Move")
+(define-action move-resize-to "MoveResizeTo")
+(define-action move-relative "MoveRelative")
+(define-action resize-relative "ResizeRelative")
+(define-action move-to-edge "MoveToEdge")
+(define-action grow-to-edge "GrowToEdge")
+(define-action grow-to-fill "GrowToFill")
+(define-action shrink-to-edge "ShrinkToEdge")
+
+(define-xml-num width "width")
+(define-xml-num height "height")
+(define-xml-num relative-left "left")
+(define-xml-num relative-right "right")
+(define-xml-num relative-top "top")
+(define-xml-num relative-bottom "bottom")
+
+(define both-directions "<direction>both</direction>")
+
+;; TODO: create all of http://openbox.org/wiki/Help:Actions [If/for actions...]

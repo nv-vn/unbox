@@ -49,11 +49,7 @@
     (popup-position centered)
     (popup-fixed-position
       (x 10) (y 10)))
-  (margins 
-    (margin-top 0)
-    (margin-bottom 0)
-    (margin-left 0)
-    (margin-right 0))
+  (make-margins 0 0 0 0) ; Top/Bottom/Left/Right
   (dock
     (position top-left)
     (floating-x 0)
