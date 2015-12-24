@@ -44,6 +44,8 @@
 
 (define yes "yes")
 (define no "no")
+(define true "true")
+(define false "false")
 
 (define-xml resistance "resistance")
 (define-xml-num strength "strength")
