@@ -21,23 +21,23 @@
     (font-active-window
       (name "sans")
       (size 8)
-      (weight "bold")
-      (slant "normal"))
+      (weight bold)
+      (slant normal))
     (font-inactive-window
       (name "sans")
       (size 8)
-      (weight "bold")
-      (slant "normal"))
+      (weight bold)
+      (slant normal))
     (font-menu-header
       (name "sans")
       (size 9)
-      (weight "normal")
-      (slant "normal"))
+      (weight normal)
+      (slant normal))
     (font-menu-item
       (name "sans")
       (size 9)
-      (weight "normal")
-      (slant "normal"))) ; Should be (in)activeonscreendisplay
+      (weight normal)
+      (slant normal))) ; Should be (in)activeonscreendisplay
   (desktops
     (number 4)
     (first-desk 1)
@@ -157,4 +157,44 @@
 ;;  (double-click-time 500) ;; FIXME!
 ;;  (screen-edge-warp-time 400) ;; FIXME!
 ;;  (screen-edge-warp-mouse false) ;; FIXME!
-    (context "Frame")))
+    (context "Frame"
+      (mousebind [A left] press
+        (action-focus)
+        (action-raise))
+      (mousebind [A left] click
+        (unshade))
+      (mousebind [A left] drag
+        (move))
+      (mousebind [A right] press
+        (action-focus)
+        (action-raise)
+        (unshade))
+      (mousebind [A right] drag
+        (action-resize))
+      (mousebind [A middle] press
+        (action-lower)
+        (action-focus-to-bottom)
+        (action-unfocus))
+      (mousebind [A up] click
+        (go-to-desktop to-previous))
+      (mousebind [A down] click
+        (go-to-desktop to-next))
+      (mousebind [C [A up]] click
+        (go-to-desktop to-previous))
+      (mousebind [C [A down]] click
+        (go-to-desktop to-next))
+      (mousebind [A [S up]] click
+        (send-to-desktop to-previous))
+      (mousebind [A [S down]] click
+        (send-to-desktop to-next)))
+    (context "Titlebar"
+      (mousebind left drag
+        (move))
+      (mousebind left double-click
+        (toggle-maximize))
+      (mousebind up click
+;;      (action-if (shaded? no)  ;; FIXME!
+          (shade)
+          (action-focus-to-bottom)
+          (action-unfocus)
+          (action-lower)))))

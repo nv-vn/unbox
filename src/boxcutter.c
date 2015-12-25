@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <libguile.h>
 
-char *get_home() {
+static char *get_home() {
   char *homedir;
   if ((homedir = getenv("HOME")) == NULL) {
     homedir = getpwuid(getuid())->pw_dir;
@@ -11,7 +11,7 @@ char *get_home() {
   return homedir;
 }
 
-char *get_in_home(char *path) {
+static char *get_in_home(char *path) {
   char *home;
   home = get_home();
 
