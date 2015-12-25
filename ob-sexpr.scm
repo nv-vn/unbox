@@ -134,6 +134,10 @@
 (define-xml decor "decor")
 (define-xml maximized "maximized")
 
+(define layer-top (layer "top"))
+(define layer-bottom (layer "bottom"))
+(define layer-normal (layer "normal"))
+
 (define (class-attr x)
   (string-append "class=\"" x "\""))
 (define (name-attr x)

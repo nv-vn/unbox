@@ -88,13 +88,13 @@
       (send-to-desktop to-up
         (wrap no)))
     (keybind [W "F1"]
-      (go-to-desktop 1))
+      (go-to-desktop (to 1)))
     (keybind [W "F2"]
-      (go-to-desktop 2))
+      (go-to-desktop (to 2)))
     (keybind [W "F3"]
-      (go-to-desktop 3))
+      (go-to-desktop (to 3)))
     (keybind [W "F4"]
-      (go-to-desktop 4))
+      (go-to-desktop (to 4)))
     (keybind [W "d"]
       (toggle-show-desktop))
  ;; Key bindings for windows
