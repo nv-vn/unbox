@@ -391,4 +391,75 @@
 
 (define both-directions "<direction>both</direction>")
 
+;; So I don't know whether action "If" requires a <query> tag or not... docs say so, but example files say otherwise?
+(define-syntax action-if ;; FIXME? Add support for target="focus"... somehow
+  (syntax-rules ()
+    [(_ (conditions ...) (then-exprs ...) (else-exprs ...))
+     `("<action name=\"If\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ("<then>" ,@then-exprs ... "</then>")
+       ("<else>" ,@else-exprs ... "</else>")
+       "</action>")]
+    [(_ (conditions ...) (then-exprs ...))
+     `("<action name=\"If\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ("<then>" ,@then-exprs ... "</then>")
+       "</action>")]
+    [(_ (conditions ...) then-expr else-expr)
+     `("<action name=\"If\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ("<then>" ,then-expr "</then>")
+       ("<else>" ,else-expr "</else>")
+       "</action>")]
+    [(_ (conditions ...) then-expr)
+     `("<action name=\"If\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ("<then>" ,then-expr "</then>")
+       "</action>")]))
+
+(define-syntax action-for-each ;; FIXME? Add support for target="focus"... somehow
+  (syntax-rules ()
+    [(_ (conditions ...) (exprs ...))
+     `("<action name=\"ForEach\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ,@exprs ...
+       "</action>")]
+    [(_ (conditions ...) expr)
+     `("<action name=\"ForEach\">"
+       ("<query target=\"default\">" ,@conditions ... "</query>")
+       ,expr
+       "</action>")]))
+
+(define-xml stop "stop")
+
+(define-xml shaded? "shaded")
+(define-xml maximized? "maximized")
+(define-xml maximized-horizontal? "maximizedhorizontal")
+(define-xml maximizedhorizontal? "maximizedhorizontal")
+(define-xml maximized-vertical? "maximizedvertical")
+(define-xml maximizedvertical? "maximizedvertical")
+(define-xml iconified? "iconified")
+(define-xml focused? "focused")
+(define-xml urgent? "urgent")
+(define-xml undecorated? "undecorated")
+(define-xml omnipresent? "omnipresent")
+(define-xml-num active-desktop? "activedesktop")
+(define-xml-num activedesktop? "activedesktop")
+(define-xml-num desktop? "desktop")
+(define desktop-current? "<desktop>current</desktop>")
+(define desktop-other? "<desktop>other</desktop>")
+(define-xml-num monitor? "monitor")
+(define-xml title? "title")
+(define-xml title-pattern? "<title type=\"pattern\">" "</title>")
+(define-xml title-regex? "<title type=\"regex\">" "</title>")
+(define-xml title-exact? "<title type=\"exact\">" "</title>")
+(define-xml class? "class")
+(define-xml name? "name")
+(define-xml role? "role")
+(define-xml type? "type")
+
+(define-action toggle-always-on-top "ToggleAlwaysOnTop")
+(define-action toggle-always-on-bottom "ToggleAlwaysOnBottom")
+(define-action send-to-layer "SendToLayer")
+
 ;; TODO: create all of http://openbox.org/wiki/Help:Actions [If/for actions...]

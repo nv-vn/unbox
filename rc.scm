@@ -193,8 +193,8 @@
       (mousebind left double-click
         (toggle-maximize))
       (mousebind up click
-;;      (action-if (shaded? no)  ;; FIXME!
-          (shade)
-          (action-focus-to-bottom)
-          (action-unfocus)
-          (action-lower)))))
+        (action-if [(shaded? no)]  ;; FIXME!
+          [(shade)
+           (action-focus-to-bottom)
+           (action-unfocus)
+           (action-lower)])))))
