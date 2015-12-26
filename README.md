@@ -1,44 +1,44 @@
-# boxcutter
+# unbox
 OpenBox rc.xml Generator (Scheme/Sexpr to XML)
 
 # Installation:
 
-`boxcutter` requires the following dependencies to build:
+`unbox` requires the following dependencies to build:
 * A sane UNIX system (i.e. gcc, pkg-config, etc.)
 * Guile 2.0 (or higher)
 * Openbox (to have an actual use)
 
-To compile and install boxcutter run:
+To compile and install unbox run:
 ```
 $ make
 $ make install-user
 # make install
 ```
 
-# Using boxcutter:
+# Using unbox:
 
-Boxcutter currently depends on specifically named configuration files.
-To edit the rc, use ~/.config/boxcutter/rc.scm. When you're done editing,
-simply run `box-cutter` and a file called rc.xml will be generated in that
+unbox currently depends on specifically named configuration files.
+To edit the rc, use ~/.config/unbox/rc.scm. When you're done editing,
+simply run `unbox` and a file called rc.xml will be generated in that
 directory. That file can simply be placed in your ~/.config/openbox directory
 to serve as your Openbox rc.xml.
 
-Because boxcutter does not currently account for proper formatting, it may be
+Because unbox does not currently account for proper formatting, it may be
 a good idea to apply an XML formatting tool on the output to make it easier
 to read. In order to do this, you can run:
 ```
-$ xmllint --format ~/.config/boxcutter/rc.xml >~/.config/boxcutter/rc.xml
+$ xmllint --format ~/.config/unbox/rc.xml >~/.config/unbox/rc.xml
 ```
 Or, to copy it to the correct location for Openbox, run:
 ```
-$ xmllint --format ~/.config/boxcutter/rc.xml >~/.config/openbox/rc.xml
+$ xmllint --format ~/.config/unbox/rc.xml >~/.config/openbox/rc.xml
 ```
 
-Note: Future versions of boxcutter will incorporate this as a flag
+Note: Future versions of unbox will incorporate this as a flag
 
-# Boxcutter syntax:
+# unbox syntax:
 
-Boxcutter uses a Scheme syntax for configurations. The syntax should be compliant
+unbox uses a Scheme syntax for configurations. The syntax should be compliant
 with Guile version 2.0. However, the configuration can be managed entirely by
 custom macros and functions, so it is not necessary to use any additional Scheme
 code in your configuration.
@@ -81,7 +81,7 @@ A basic example exists below:
 ;; This is an example config.
 ;; It is nowhere near complete
 ;; but it does showcase some
-;; of boxcutter's features
+;; of unbox's features
 (rc
   (resistance
     (strenth 10)
@@ -92,7 +92,7 @@ A basic example exists below:
 
 If you're interested in helping out this project or find a problem with it, there
 are a number of ways you can contribute. One of the best ways is to open up a
-issue on the [Github repository](https://github.com/nv-vn/boxcutter/issues) to
+issue on the [Github repository](https://github.com/nv-vn/unbox/issues) to
 report bugs, missing features, or inconsistent behaviour. Additionally, you are
 encouraged to fork the repository and add features to improve the project for
 others (or fix bugs that you find). Finally, if you're interested in contributing

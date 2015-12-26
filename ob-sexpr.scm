@@ -10,7 +10,7 @@
 
 (define (ob-conf nodes)
   (string-append "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-                 "<!-- Generated with https://github.com/nv-vn/boxcutter -->\n"
+                 "<!-- Generated with https://github.com/nv-vn/unbox -->\n"
                  "<openbox_config xmlns=\"https://openbox.org/3.6/rc\" xmlns:xi=\"https://www.w3.org/2001/XInclude\">\n"
                  (ob-gen-xml nodes "") ; No indentation by default
                  "</openbox_config>\n"))

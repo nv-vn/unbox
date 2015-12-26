@@ -13,9 +13,9 @@ PKGCONFIGDIR ?= $(LIBDIR)/pkgconfig
 PKGCONFIG ?= pkg-config
 
 DEPS := guile-2.0
-SOURCES := src/boxcutter.c
+SOURCES := src/unbox.c
 OBJECTS := $(SOURCES:%.c=%.o)
-TARGETS := box-cutter
+TARGETS := unbox
 
 CLEAN_FILES := $(TARGETS) $(OBJECTS)
 
@@ -29,16 +29,16 @@ pkgconfig   = $(foreach pkg,$(1),$(if $($(pkg)_$(3)),$($(pkg)_$(3)), \
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $^ $(PKG_CFLAGS)
 
-box-cutter: $(OBJECTS)
+unbox: $(OBJECTS)
 	$(link) $(PKG_LIBS) -lm
 
 install: $(TARGETS)
-	install -m 755 box-cutter $(DESTDIR)$(BINDIR)
+	install -m 755 unbox $(DESTDIR)$(BINDIR)
 
 install-user:
-	mkdir -p $(CONFDIR)/boxcutter
-	install -m 755 ob-sexpr.scm $(CONFDIR)/boxcutter
-	install -m 755 rc.scm $(CONFDIR)/boxcutter
+	mkdir -p $(CONFDIR)/unbox
+	install -m 755 ob-sexpr.scm $(CONFDIR)/unbox
+	install -m 755 rc.scm $(CONFDIR)/unbox
 
 clean:
 	rm -rf $(CLEAN_FILES)
