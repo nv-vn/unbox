@@ -17,24 +17,18 @@ $ make install-user
 
 # Using unbox:
 
-unbox currently depends on specifically named configuration files.
-To edit the rc, use ~/.config/unbox/rc.scm. When you're done editing,
-simply run `unbox` and a file called rc.xml will be generated in that
-directory. That file can simply be placed in your ~/.config/openbox directory
-to serve as your Openbox rc.xml.
-
-Because unbox does not currently account for proper formatting, it may be
-a good idea to apply an XML formatting tool on the output to make it easier
-to read. In order to do this, you can run:
-```
-$ xmllint --format ~/.config/unbox/rc.xml >~/.config/unbox/rc.xml
-```
-Or, to copy it to the correct location for Openbox, run:
-```
-$ xmllint --format ~/.config/unbox/rc.xml >~/.config/openbox/rc.xml
-```
-
-Note: Future versions of unbox will incorporate this as a flag
+unbox uses a number of different flags and options. To view a help page you
+can use the '-h' flag and to view the currently installed version of unbox
+you can use the '-v' flag. In order to generate an rc.xml from the default
+file ('~/.config/unbox/rc.scm') you can simply run `unbox`. This will place
+the output in the same folder ('~/.config/unbox/rc.xml'). If you want to use
+a different output file, you can use the '-o' flag like so: `unbox -o rc1.xml`.
+If you want to use a different input file, you simply add its name after the
+command: `unbox my_rc.scm`. Note that this will not change the default output
+name, so if you want that to generate a file named my_rc.scm, you must use
+`unbox my_rc.scm -o my_rc.xml`. If you want the XML output to be formatted to
+the correct XML standards (and have `xmllint` installed on your system), you
+can use the '-f' flag.
 
 # unbox syntax:
 
